@@ -14,23 +14,23 @@
   <div id="app">
     <div class="container-fluid bg-dark text-light py-4">
       <div class="container"> 
-        <h1 class="text-center mb-4"> <img src="img/logo.png" alt="logo">Cine Max</h1> 
+        <h1 class="text-center mb-4"> <img class="logo" src="img/logo.png" alt="logo">Cine Max</h1> 
         <div v-if="mensajeAlerta" :class="[mensajeAlerta.tipo]" role="alert">
           {{ mensajeAlerta.texto }}
         </div>       
         <!-- Barra de Búsqueda -->
         <div class="mb-4">
-          <input type="text" v-model="consulta" class="form-control" placeholder="Buscar películas...">
-          <button @click="buscarPeliculas" class="btn btn-primary mt-2">Buscar</button>
+          <input type="text" v-model="consulta" class="form-control mt-3" placeholder="Buscar películas...">
+          <button @click="buscarPeliculas" class="btn btn-primary mt-2 mt-4">Buscar</button>
         </div>
 
         <!-- Filtrar por Género -->
         <div class="mb-4">
-          <select v-model="generoSeleccionado" class="form-select">
+          <select v-model="generoSeleccionado" class="form-select mt-3">
             <option value="">Todos los Géneros</option>
             <option v-for="genero in generos" :key="genero.id" :value="genero.id">{{ genero.name }}</option>
           </select>
-          <button @click="filtrarPorGenero" class="btn btn-primary mt-2">Filtrar por Género</button>
+          <button @click="filtrarPorGenero" class="btn btn-primary mt-2 mt-4">Filtrar por Género</button>
         </div>
 
         <!-- Mensaje de Error de Búsqueda -->
@@ -41,7 +41,7 @@
         <!-- Películas Populares -->
         <h2 v-if="mostrarPeliculasPopulares">Películas Populares</h2>
         <div class="row" v-if="mostrarPeliculasPopulares">
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-3" v-for="pelicula in peliculasPopulares.slice(0, 6)" :key="pelicula.id">
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mt-4" v-for="pelicula in peliculasPopulares.slice(0, 6)" :key="pelicula.id">
             <div class="card card-pelicula" v-if="pelicula.poster_path && pelicula.overview">
               <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2' + pelicula.poster_path" class="card-img-top" alt="...">
               <div class="card-body">
@@ -94,9 +94,9 @@
 
         <!-- Favoritos -->
         <div class="mt-5">
-          <h2>Mis Favoritos <img src="img/footer.png" alt="estrella"></h2>
+          <h2>Mis Favoritos <img src="img/footer.png" alt="estrella" class="icono"></h2>
           <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-3 pb-5" v-for="fav in favoritos" :key="fav.id">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-3 pb-5 mt-4" v-for="fav in favoritos" :key="fav.id">
               <div class="card card-pelicula mb-3" v-if="fav.poster_path && fav.overview">
                 <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2' + fav.poster_path" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -112,6 +112,14 @@
           </div>
         </div>
       </div>
+
+      <!-- Footer-->
+
+   <footer class="bg-dark light text-light py-3 mt-5">
+    <div class="container text-center">
+      <p>&copy; 2024 Matias Gutierrez. Todos los derechos reservados.</p>
+    </div>
+  </footer>
     </div>
   </div>
 
